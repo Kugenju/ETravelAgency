@@ -1,0 +1,7 @@
+F:\C#data\TravelAgency\TravelAgency\bin\TravelAgency.dll.config
+F:\C#data\TravelAgency\TravelAgency\bin\TravelAgency.dll
+F:\C#data\TravelAgency\TravelAgency\bin\TravelAgency.pdb
+F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.csproj.AssemblyReference.cache
+F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.csproj.CoreCompileInputs.cache
+F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.dll
+F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.pdb
