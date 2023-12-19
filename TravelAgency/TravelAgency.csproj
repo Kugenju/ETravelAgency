@@ -385,19 +385,55 @@
     <Content Include="Forms\app-email.html" />
     <Content Include="Forms\index.html" />
     <Content Include="Forms\indexhou.html" />
+    <Content Include="Forms\school-hostel-room.html" />
+    <Content Include="Views\Admin\Add-Lines.aspx" />
+    <Content Include="Views\Admin\Change-Lines.aspx" />
     <Content Include="Views\Admin\Guide.aspx" />
+    <Content Include="Views\Admin\Hotel.aspx" />
+    <Content Include="Views\Admin\index.aspx" />
     <Content Include="Views\Admin\login.aspx" />
+    <Content Include="Views\Admin\Order.aspx" />
+    <Content Include="Views\Admin\Overall-Lines.aspx" />
+    <Content Include="Views\Admin\Spot.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Functions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Admin\Add-Lines.aspx.cs">
+      <DependentUpon>Add-Lines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Add-Lines.aspx.designer.cs">
+      <DependentUpon>Add-Lines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Change-Lines.aspx.cs">
+      <DependentUpon>Change-Lines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Change-Lines.aspx.designer.cs">
+      <DependentUpon>Change-Lines.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\Guide.aspx.cs">
       <DependentUpon>Guide.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Admin\Guide.aspx.designer.cs">
       <DependentUpon>Guide.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Hotel.aspx.cs">
+      <DependentUpon>Hotel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Hotel.aspx.designer.cs">
+      <DependentUpon>Hotel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -412,6 +448,27 @@
     </Compile>
     <Compile Include="Views\Admin\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Overall-Lines.aspx.cs">
+      <DependentUpon>Overall-Lines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Overall-Lines.aspx.designer.cs">
+      <DependentUpon>Overall-Lines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\Spot.aspx.cs">
+      <DependentUpon>Spot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\Spot.aspx.designer.cs">
+      <DependentUpon>Spot.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
