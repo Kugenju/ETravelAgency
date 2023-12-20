@@ -11,6 +11,7 @@ namespace EHotal.Models
     {
         private SqlConnection Con;
         private SqlCommand Cmd;
+        private SqlDataReader Reader;
         private DataTable dt;
         private string Constr;
         private SqlDataAdapter sda;
@@ -36,9 +37,20 @@ namespace EHotal.Models
             return dt;
         }
 
+        public SqlDataReader GetReader(string Query)
+        {
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
+            Cmd.CommandText = Query;
+            Reader = Cmd.ExecuteReader();
+            return Reader;
+        }
+
         public Functions()
         {
-            Constr = @"";
+            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\27294\Documents\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
             Con = new SqlConnection(Constr);
             Cmd = new SqlCommand();
             Cmd.Connection = Con;

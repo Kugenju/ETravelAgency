@@ -386,6 +386,7 @@
     <Content Include="Forms\index.html" />
     <Content Include="Forms\indexhou.html" />
     <Content Include="Forms\school-hostel-room.html" />
+    <Content Include="Forms\table-data.html" />
     <Content Include="Views\Admin\Add-Lines.aspx" />
     <Content Include="Views\Admin\Change-Lines.aspx" />
     <Content Include="Views\Admin\Guide.aspx" />

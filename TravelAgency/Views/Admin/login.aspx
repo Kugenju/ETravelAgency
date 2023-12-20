@@ -58,7 +58,7 @@
               <p class="lead mb-4"><em>人生就是一次充满未知的旅行，在乎的是沿途的风景，在乎的是看风景的心情，旅行不会因为美丽的风景终止。走过的路成为背后的风景，不能回头不能停留，若此刻停留，将会错过更好的风景，保持一份平和，保持一份清醒。享受每一刻的感觉，欣赏每一处的风景，这就是人生。</em></p>
               <p class="probootstrap-author">
                 <a href="#" target="_blank">
-                  <img src="../assets/images/person_1.jpg" alt="Free Template by ProBootstrap.com" class="rounded-circle">
+                  <img src="../../assets/images/person_1.jpg" alt="Free Template by ProBootstrap.com" class="rounded-circle">
                   <span class="probootstrap-name">James Smith</span>
                   <span class="probootstrap-title">Chief Executive Officer</span>
                 </a>
