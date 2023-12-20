@@ -50,7 +50,7 @@ namespace EHotal.Models
 
         public Functions()
         {
-            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\27294\Documents\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
+            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\C#data\TravelAgency\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
             Con = new SqlConnection(Constr);
             Cmd = new SqlCommand();
             Cmd.Connection = Con;
