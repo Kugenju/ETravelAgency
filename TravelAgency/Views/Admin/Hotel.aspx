@@ -53,12 +53,39 @@
                                             <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="HPriceTb" runat="server">
                                         </div>
                                     </div>
-                                    
-                                    <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click" />
-                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="ResetBtn_Click"/>
                                     <div class="basic-form m-t-20">
                                         <label id="ErrMsg" runat="server"></label>
                                     </div>
+                                    <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="修改" OnClick="EditBtn_Click" />
+                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="删除" OnClick="ResetBtn_Click"/>
+                            </div>
+                            <div class="card alert">
+                                <div class="card-header pr">
+                                    <h4>添加酒店信息</h4>
+                                </div>
+                                    <div class="basic-form m-t-20">
+                                        <div class="form-group">
+                                            <label>酒店名称</label>
+                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HNTb" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="basic-form m-t-20">
+                                        <div class="form-group">
+                                            <label>酒店地址</label>
+                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HATb" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="basic-form m-t-20">
+                                        <div class="form-group">
+                                            <label>价格</label>
+                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="HPTb" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="basic-form m-t-20">
+                                        <label id="Label1" runat="server"></label>
+                                    </div>
+                                    <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click" />
+                                    <asp:Button ID="Res" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="Res_Click"/>
                             </div>
                         </div>
                         <div class="col-lg-9">

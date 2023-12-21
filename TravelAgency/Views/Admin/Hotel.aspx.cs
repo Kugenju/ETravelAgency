@@ -108,9 +108,21 @@ namespace TravelAgency.Views.Admin
 
         protected void ResetBtn_Click(object sender, EventArgs e)
         {
-            HNameTb.Value = "";
-            HAddressTb.Value = "";
-            HPriceTb.Value = "";
+            try
+            {
+                string Query = "delete from Hotel where HotelID = {0};";
+                Query = string.Format(Query, HGV.SelectedRow.Cells[1].Text);
+                fun.setData(Query);
+                ErrMsg.InnerText = "酒店已删除";
+                showHotel();
+                HNameTb.Value = "";
+                HAddressTb.Value = "";
+                HPriceTb.Value = "";
+            }
+            catch (Exception ex)
+            {
+                ErrMsg.InnerText = ex.Message;
+            }
         }
 
         protected void SaveBtn_Click(object sender, EventArgs e)
@@ -125,12 +137,43 @@ namespace TravelAgency.Views.Admin
                 fun.setData(Query);
                 ErrMsg.InnerText = "酒店已添加";
                 showHotel();
+                HNTb.Value = "";
+                HATb.Value = "";
+                HPTb.Value = "";
             }
             catch (Exception ex)
             {
                 ErrMsg.InnerText = ex.Message;
-
             }
+        }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string HName = HNameTb.Value;
+                string HAddress = HAddressTb.Value;
+                string HPrice = HPriceTb.Value;
+                string Query = "update Hotel set HotelName = {0}, Address = {1}, Price = {2} where HotelID = {3};";
+                Query = string.Format(Query, HName, HAddress, HPrice,HGV.SelectedRow.Cells[1].Text);
+                fun.setData(Query);
+                ErrMsg.InnerText = "酒店已修改";
+                showHotel();
+                HNameTb.Value = "";
+                HAddressTb.Value = "";
+                HPriceTb.Value = "";
+            }
+            catch (Exception ex)
+            {
+                ErrMsg.InnerText = ex.Message;
+            }
+        }
+
+        protected void Res_Click(object sender, EventArgs e)
+        {
+            HNTb.Value = "";
+            HATb.Value = "";
+            HPTb.Value = "";
         }
     }
 }
