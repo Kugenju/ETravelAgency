@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Hotel.aspx.cs" Inherits="TravelAgency.Views.Admin.Hotel" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Hotel.aspx.cs" Inherits="TravelAgency.Views.Admin.Hotel" EnableEventValidation="false"%>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
@@ -33,7 +33,7 @@
                         <div class="col-md-3">
                             <div class="card alert">
                                 <div class="card-header pr">
-                                    <h4>添加新酒店</h4>
+                                    <h4>修改酒店信息</h4>
                                 </div>
                                     <div class="basic-form m-t-20">
                                         <div class="form-group">
@@ -54,8 +54,8 @@
                                         </div>
                                     </div>
                                     
-                                    <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5 sbmt-btn" runat="server" Text="保存" OnClick="SaveBtn_Click" />
-                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5 sbmt-btn" runat="server" Text="重置" OnClick="ResetBtn_Click"/>
+                                    <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click" />
+                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="ResetBtn_Click"/>
                                     <div class="basic-form m-t-20">
                                         <label id="ErrMsg" runat="server"></label>
                                     </div>
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                     <div id="Htable" class="card-body">
-                                        <asp:GridView class="table student-data-table m-t-20" ID="HGV" runat="server"  OnSelectedIndexChanged="HGV_SelectedIndexChanged" AutoGenerateSelectButton="True" OnPageIndexChanged="HGV_PageIndexChanged" OnPageIndexChanging="HGV_PageIndexChanging">
+                                        <asp:GridView class="table student-data-table m-t-20" ID="HGV" runat="server"  OnSelectedIndexChanged="HGV_SelectedIndexChanged" AutoGenerateSelectButton="True" OnPageIndexChanged="HGV_PageIndexChanged" OnPageIndexChanging="HGV_PageIndexChanging" RowStyle-BorderColor="#999999">
                                             <%--<PagerTemplate>
                                                 当前第
                                                 <!--((GridView)Container.NamingContainer)就是为了得到当前的控件-->
