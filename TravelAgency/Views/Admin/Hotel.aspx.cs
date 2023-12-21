@@ -132,10 +132,10 @@ namespace TravelAgency.Views.Admin
                 string HName = HNameTb.Value;
                 string HAddress = HAddressTb.Value;
                 string HPrice = HPriceTb.Value;
-                string Query = "INSERT INTO Hotel (HotelName, Address, Price) VALUES ('{0}', '{1}', {2});";
+                string Query = "insert into Hotel (HotelName,Address,Price) values ('{0}','{1}','{2}');";
                 Query = string.Format(Query, HName, HAddress, HPrice);
                 fun.setData(Query);
-                ErrMsg.InnerText = "酒店已添加";
+                Msg.InnerText = "酒店已添加";
                 showHotel();
                 HNTb.Value = "";
                 HATb.Value = "";
@@ -143,7 +143,7 @@ namespace TravelAgency.Views.Admin
             }
             catch (Exception ex)
             {
-                ErrMsg.InnerText = ex.Message;
+                Msg.InnerText = ex.Message;
             }
         }
 

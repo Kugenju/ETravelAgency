@@ -84,6 +84,9 @@
                                     <div class="basic-form m-t-20">
                                         <label id="Label1" runat="server"></label>
                                     </div>
+                                    <div>
+                                        <label id="Msg" runat="server"></label>
+                                    </div>
                                     <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click" />
                                     <asp:Button ID="Res" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="Res_Click"/>
                             </div>
@@ -121,7 +124,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                    <div id="Htable" class="card-body">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
                                         <asp:GridView class="table student-data-table m-t-20" ID="HGV" runat="server"  OnSelectedIndexChanged="HGV_SelectedIndexChanged" AutoGenerateSelectButton="True" OnPageIndexChanged="HGV_PageIndexChanged" OnPageIndexChanging="HGV_PageIndexChanging" RowStyle-BorderColor="#999999">
                                             <%--<PagerTemplate>
                                                 当前第
@@ -148,6 +152,7 @@
                                                     CommandName="Page" Text="GO" />
                                             </PagerTemplate>--%>
                                         </asp:GridView>
+                                           </div>
                                     </div>
                             </div>
                         </div>
