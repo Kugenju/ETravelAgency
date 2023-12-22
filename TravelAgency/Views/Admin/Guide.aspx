@@ -81,13 +81,10 @@
                                         <h4></h4>
                                         <div class="search-action">
                                             <div class="search-type dib">
-                                                <input class="form-control input-rounded" placeholder="Search by Hotel" type="text">
+                                                <input class="form-control input-rounded" placeholder="Search by Name" type="text">
                                             </div>
                                             <div class="search-type dib">
-                                                <input class="form-control input-rounded" placeholder="Search by Room..." type="text">
-                                            </div>
-                                            <div class="search-type dib">
-                                                <input class="form-control input-rounded" placeholder="Search by bed" type="text">
+                                                <input class="form-control input-rounded" placeholder="Search by Contact" type="text">
                                             </div>
                                             <div class="search-type dib">
                                                 <input class="form-control input-rounded" placeholder="search" type="text">

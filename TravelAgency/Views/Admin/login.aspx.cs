@@ -13,5 +13,24 @@ namespace TravelAgency.Admin
         {
 
         }
+
+        protected void LoginBtn_Click(object sender, EventArgs e)
+        {
+            if(userRadio.Checked == true)
+            {
+
+            }
+            if(adminRadio.Checked == true)
+            {
+                if(UserTb.Value == "Admin" && PasswordTb.Value == "123")
+                {
+                    Response.Redirect("index.aspx");
+                }
+                else
+                {
+                    Msg.InnerText = "您输入的账号或密码有错误";
+                }
+            }
+        }
     }
 }

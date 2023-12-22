@@ -17,8 +17,8 @@
                 <div class="row mb-3">
                   <div class="col-md">
                     <div class="form-group">
-                      <label for="id_label_single">邮箱</label>
-                      <input type="email" class="form-control" id="EmailTb"/>
+                      <label for="id_label_single">账号</label>
+                      <input type="" class="form-control" id="UserTb" runat="server"/>
 
                     </div>
                   </div>
@@ -28,18 +28,19 @@
                   <div class="col-md">
                     <div class="form-group">
                       <label for="probootstrap-date-departure">密码</label>
-                      <input type="password" class="form-control" id="PasswordTb"/>
+                      <input type="password" class="form-control" id="PasswordTb" runat="server"/>
                     </div>
                   </div>
                 </div>
+                  <div><label id="Msg" runat="server"></label></div>
                 <!-- END row -->
                 <div class="row">
                   <div class="col-md">
-                    <label for="round" class="mr-5"><input type="radio" id="user" name="direction">  用户</label>
-                    <label for="oneway"><input type="radio" id="admin" name="direction">管理员</label>
+                    <label for="round" class="mr-5"><input type="radio" id="userRadio" name="direction" runat="server">用户</label>
+                    <label for="oneway"><input type="radio" id="adminRadio" name="direction" runat="server">管理员</label>
                   </div>
                   <div class="col-md">
-                    <asp:Button ID="LoginBtn" runat="server" Text="登陆" class="btn btn-primary btn-block"/>
+                    <asp:Button ID="LoginBtn" runat="server" Text="登陆" class="btn btn-primary btn-block" OnClick="LoginBtn_Click"/>
                   </div>
                 </div>
               </div>
