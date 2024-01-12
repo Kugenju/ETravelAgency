@@ -29,7 +29,7 @@
                 <section id="main-content">
                     <form runat="server">
                         <div class="row">
-                            <div class="col-md-9">
+                            <div>
                                 <div class="card alert">
                                     <div class="card-header pr">
                                         <h4></h4>
@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <asp:GridView ID="OLGV" runat="server"></asp:GridView>
+                                            <asp:GridView ID="OLGV" class="table student-data-table m-t-20" runat="server"></asp:GridView>
                                         </div>
                                     </div>
                                 </div>

@@ -122,7 +122,26 @@
                                     </div>
                                     <div class="card-body">
                                     <div class="table-responsive">
-                                        <asp:GridView class="table student-data-table m-t-20" ID="SGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="SGV_SelectedIndexChanged">
+                                        <asp:GridView class="table student-data-table m-t-20" ID="SGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="SGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:BoundField HeaderText="景点名称" />
+                                                <asp:BoundField HeaderText="地址" />
+                                                <asp:BoundField HeaderText="价格" />
+                                                <asp:TemplateField HeaderText="行为">
+
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            
+                                            <EditRowStyle BackColor="#2461BF" />
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
                                             
                                         </asp:GridView>
                                     </div>

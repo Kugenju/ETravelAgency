@@ -14,6 +14,7 @@ namespace TravelAgency.Views.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             fun = new Functions();
+            showLines();
         }
 
         private void showLines()

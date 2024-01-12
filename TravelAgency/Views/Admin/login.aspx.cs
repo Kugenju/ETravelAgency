@@ -24,7 +24,9 @@ namespace TravelAgency.Admin
             {
                 if(UserTb.Value == "Admin" && PasswordTb.Value == "123")
                 {
-                    Response.Redirect("index.aspx");
+                    Session["username"] = UserTb.Value;
+                    Session["password"] = PasswordTb.Value;
+                    Response.Redirect("Overall-Lines.aspx");
                 }
                 else
                 {

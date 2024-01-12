@@ -11,8 +11,13 @@ namespace TravelAgency.Views.Admin
     public partial class Spot : System.Web.UI.Page
     {
         private Functions fun;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"] == null)
+            {
+                Response.Redirect("login.aspx");
+            }
             fun = new Functions();
             showSpot();
         }
@@ -53,7 +58,7 @@ namespace TravelAgency.Views.Admin
                 string SName = SNameTb.Value;
                 string SAddress = SAddressTb.Value;
                 string SPrice = SPriceTb.Value;
-                string Query = "update Spot set SpotName = '{0}', Address = '{1}', Price = '{2}' where GuideID = {3};";
+                string Query = "update Spot set SpotName = '{0}', Address = '{1}', Price = '{2}' where SpotID = {3};";
                 Query = string.Format(Query, SName, SAddress,SPrice, SGV.SelectedRow.Cells[1].Text);
                 fun.setData(Query);
                 ErrMsg.InnerText = "酒店已修改";
