@@ -65,7 +65,7 @@ namespace TravelAgency.Views.Admin
                 string SAddress = SAddressTb.Value;
                 string SPrice = SPriceTb.Value;
                 string Query = "update Spot set SpotName = '{0}', Address = '{1}', Price = '{2}' where SpotID = {3};";
-                Query = string.Format(Query, SName, SAddress,SPrice, ((Label)SGV.SelectedRow.Cells[1].FindControl("SIL")).Text);
+                Query = string.Format(Query, SName, SAddress, SPrice, ((Label)SGV.SelectedRow.Cells[1].FindControl("SIL")).Text);
                 fun.setData(Query);
                 ErrMsg.InnerText = "景点已修改";
                 showSpot();

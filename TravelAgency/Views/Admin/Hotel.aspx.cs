@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.EnterpriseServices;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -27,31 +26,15 @@ namespace TravelAgency.Views.Admin
             fun = new Functions();
             showHotel();
         }
-        //    {
-        //        fun = new Functions();
-        //    String query = "SELECT CustomerID, CustomerName, Phone, Address FROM dbo.Customer";
-        //    SqlDataReader reader = fun.GetReader(query);
-        //    StringBuilder tableContent = new StringBuilder();
-        //    tableContent.Append("<div class=\"table-responsive\">\r\n                                        <table class=\"table student-data-table m-t-20\">\r\n                                            <thead>\r\n                                                <tr>\r\n                                                    <th><label><input type=\"checkbox\" value=\"\"></label>CustomerID<th>\r\n                                                    <th>CustomerName</th>\r\n                                                    <th> Phone</th>\r\n                                                    <th>Address</th>\r\n                                                </tr>\r\n                                            </thead>\r\n                                            <tbody>\r\n");
-        //        while (reader.Read())
-        //        {
-        //            tableContent.Append("                                               <tr>\r\n");
-        //            tableContent.AppendFormat("                                                 <td><label><input type=\"checkbox\" value=\"\"></label>{0}</td>\r\n", reader["CustomerID"]);
-        //            tableContent.AppendFormat("                                                 <td>{0}</td>\r\n", reader["CustomerName"]);
-        //            tableContent.AppendFormat("                                                 <td>{0}</td>\r\n", reader["Phone"]);
-        //            tableContent.AppendFormat("                                                 <td>{0}</td>\r\n", reader["Address"]);
-        //            tableContent.Append("                                                 <td>\r\n                                                        <span><a href=\"\"><i class=\"ti-eye color-default\"></i></a> </span>\r\n                                                        <span><a href=\"\"><i class=\"ti-pencil-alt color-success\"></i></a></span>\r\n                                                        <span><a href=\"\"><i class=\"ti-trash color-danger\"></i> </a></span>\r\n                                                    </td>\r\n");
-        //            tableContent.Append("                                               </tr>\r\n");
-        //        }
-        //tableContent.Append("                                            </tbody>\r\n                                        </table>\r\n                                    </div>\r\n                                </div>\r\n                            </div>\r\n                        </div>");
-        //            String script = "document.addEventListener(\"DOMContentLoaded\", function() {document.getElementById('HTable').innerHTML = \"" + tableContent.ToString() + "\"});";
-        //ClientScript.RegisterStartupScript(this.GetType(), "LoadCustomerData", script, true);
-        //}
+
         private void showHotel()
         {
             String query = "Select HotelID, HotelName, Address, Price FROM Hotel";
-            HGV.DataSource = fun.GetData(query);
+            DataView dv = fun.GetData(query);
+            HGV.DataSource = dv;
             HGV.DataBind();
+            GridViewRow pagerow = HGV.BottomPagerRow;
+            ((Label)pagerow.Cells[0].FindControl("PagerMsg")).Text = "共" + dv.Count.ToString() + "条记录," + HGV.PageCount.ToString() + "页第" + (HGV.PageIndex + 1).ToString() + "页,  本页" + HGV.Rows.Count.ToString() + "条记录";
         }
 
         protected void HGV_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,9 +42,26 @@ namespace TravelAgency.Views.Admin
             int selectedIndex = HGV.SelectedIndex;
             if (selectedIndex >= 0)
             {
-                HNameTb.Value = HGV.SelectedRow.Cells[2].Text;
-                HAddressTb.Value = HGV.SelectedRow.Cells[3].Text;
-                HPriceTb.Value = HGV.SelectedRow.Cells[4].Text;
+                HNameTb.Value = ((Label)HGV.Rows[selectedIndex].Cells[1].FindControl("HNL")).Text;
+                HAddressTb.Value = ((Label)HGV.Rows[selectedIndex].Cells[1].FindControl("HAL")).Text;
+                HPriceTb.Value = ((Label)HGV.Rows[selectedIndex].Cells[1].FindControl("HPL")).Text;
+            }
+        }
+
+
+        public void HGV_Del(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                string Query = "delete from Hotel where HotelID = {0};";
+                Query = string.Format(Query, ((Label)HGV.Rows[e.RowIndex].Cells[1].FindControl("HIL")).Text);
+                fun.setData(Query);
+                ErrMsg.InnerText = "酒店已删除";
+                showHotel();
+            }
+            catch (Exception ex)
+            {
+                ErrMsg.InnerText = ex.Message;
             }
         }
 
@@ -80,7 +80,6 @@ namespace TravelAgency.Views.Admin
                 //点击了Go按钮
                 TextBox txtNewPageIndex = null;
 
-                //GridView较DataGrid提供了更多的API，获取分页块可以使用BottomPagerRow 或者TopPagerRow，当然还增加了HeaderRow和FooterRow
                 GridViewRow pagerRow = theGrid.BottomPagerRow;
 
                 if (pagerRow != null)
@@ -110,24 +109,6 @@ namespace TravelAgency.Views.Admin
             //getInfo();
         }
 
-        protected void ResetBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string Query = "delete from Hotel where HotelID = {0};";
-                Query = string.Format(Query, HGV.SelectedRow.Cells[1].Text);
-                fun.setData(Query);
-                ErrMsg.InnerText = "酒店已删除";
-                showHotel();
-                HNameTb.Value = "";
-                HAddressTb.Value = "";
-                HPriceTb.Value = "";
-            }
-            catch (Exception ex)
-            {
-                ErrMsg.InnerText = ex.Message;
-            }
-        }
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
@@ -139,15 +120,15 @@ namespace TravelAgency.Views.Admin
                 string Query = "insert into Hotel (HotelName,Address,Price) values ('{0}','{1}','{2}');";
                 Query = string.Format(Query, HName, HAddress, HPrice);
                 fun.setData(Query);
-                Msg.InnerText = "酒店已添加";
+                ErrMsg.InnerText = "酒店已保存";
                 showHotel();
-                HNTb.Value = "";
-                HATb.Value = "";
-                HPTb.Value = "";
+                HNameTb.Value = "";
+                HAddressTb.Value = "";
+                HPriceTb.Value = "";
             }
             catch (Exception ex)
             {
-                Msg.InnerText = ex.Message;
+                ErrMsg.InnerText = ex.Message;
             }
         }
 
@@ -158,8 +139,8 @@ namespace TravelAgency.Views.Admin
                 string HName = HNameTb.Value;
                 string HAddress = HAddressTb.Value;
                 string HPrice = HPriceTb.Value;
-                string Query = "update Hotel set HotelName = {0}, Address = {1}, Price = {2} where HotelID = {3};";
-                Query = string.Format(Query, HName, HAddress, HPrice,HGV.SelectedRow.Cells[1].Text);
+                string Query = "update Hotel set HotelName = '{0}', Address = '{1}', Price = {2} where HotelID = {3};";
+                Query = string.Format(Query, HName, HAddress, HPrice, ((Label)HGV.SelectedRow.Cells[1].FindControl("HIL")).Text);
                 fun.setData(Query);
                 ErrMsg.InnerText = "酒店已修改";
                 showHotel();
@@ -173,11 +154,17 @@ namespace TravelAgency.Views.Admin
             }
         }
 
-        protected void Res_Click(object sender, EventArgs e)
+        protected void PreBtnClick(object sender, EventArgs e)
         {
-            HNTb.Value = "";
-            HATb.Value = "";
-            HPTb.Value = "";
+            HGV.PageIndex = Math.Max(HGV.PageIndex - 1, 0);
+            showHotel();
         }
+
+        protected void NextBtnClick(object sender, EventArgs e)
+        {
+            HGV.PageIndex = Math.Min(HGV.PageIndex + 1, HGV.PageCount - 1);
+            showHotel();
+        }
+
     }
 }

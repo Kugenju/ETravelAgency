@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Guide.aspx.cs" Inherits="TravelAgency.Views.Admin.Guide" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Guide.aspx.cs" Inherits="TravelAgency.Views.Admin.Guide" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
@@ -32,7 +32,7 @@
                             <div class="col-md-3">
                                 <div class="card alert">
                                     <div class="card-header pr">
-                                        <h4>修改导游信息</h4>
+                                        <h4>导游信息管理</h4>
                                     </div>
                                         <div class="basic-form m-t-20">
                                             <div class="form-group">
@@ -50,29 +50,7 @@
                                             <label id="ErrMsg" runat="server"></label>
                                         </div>
                                         <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="修改" OnClick="EditBtn_Click"/>
-                                        <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="删除" OnClick="ResetBtn_Click"/>
-                                </div>
-                                <div class="card alert">
-                                    <div class="card-header pr">
-                                        <h4>添加导游信息</h4>
-                                    </div>
-                                        <div class="basic-form m-t-20">
-                                            <div class="form-group">
-                                                <label>姓名</label>
-                                                <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="GNTb" runat="server">
-                                            </div>
-                                        </div>
-                                        <div class="basic-form m-t-20">
-                                            <div class="form-group">
-                                                <label>联系方式</label>
-                                                <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="GCTb" runat="server">
-                                            </div>
-                                        </div>
-                                        <div class="basic-form m-t-20">
-                                            <label id="Msg" runat="server"></label>
-                                        </div>
-                                        <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click"/>
-                                        <asp:Button ID="Res" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="Res_Click"/>
+                                        <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="添加" OnClick="SaveBtn_Click"/>
                                 </div>
                             </div>
                             <div class="col-lg-9">
@@ -107,9 +85,51 @@
                                     </div>
                                         <div class="card-body">
                                             <div class="table-responsive">
-                                                <asp:GridView class="table student-data-table m-t-20" ID="GGV" runat="server" AutoGenerateSelectButton="True" EnableSortingAndPagingCallbacks="False" OnSelectedIndexChanged="GGV_SelectedIndexChanged">
-                                                    
-                                                </asp:GridView>
+                                            <asp:GridView class="table student-data-table m-t-20" ID="GGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="GGV_Del" OnSelectedIndexChanged="GGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="导游ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="GIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "GuideID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="导游名称">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="GNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "GuideName").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="导游联系方式">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="GCL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Contact").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+
+                                                <asp:TemplateField HeaderText="操作">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
+                                                    </ItemTemplate>
+                                
+                                                </asp:TemplateField>
+
+                                            </Columns>
+                                            <pagertemplate>
+                                                <table>
+                                                    <tr>
+                                                        <td style="width:100%; text-align:right">
+                                                            <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                            </pagertemplate>
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
                                             </div>
                                         </div>
                                 </div>

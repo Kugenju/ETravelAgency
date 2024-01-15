@@ -33,7 +33,7 @@
                         <div class="col-md-3">
                             <div class="card alert">
                                 <div class="card-header pr">
-                                    <h4>修改酒店信息</h4>
+                                    <h4>酒店信息管理</h4>
                                 </div>
                                     <div class="basic-form m-t-20">
                                         <div class="form-group">
@@ -57,38 +57,7 @@
                                         <label id="ErrMsg" runat="server"></label>
                                     </div>
                                     <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="修改" OnClick="EditBtn_Click" />
-                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="删除" OnClick="ResetBtn_Click"/>
-                            </div>
-                            <div class="card alert">
-                                <div class="card-header pr">
-                                    <h4>添加酒店信息</h4>
-                                </div>
-                                    <div class="basic-form m-t-20">
-                                        <div class="form-group">
-                                            <label>酒店名称</label>
-                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HNTb" runat="server">
-                                        </div>
-                                    </div>
-                                    <div class="basic-form m-t-20">
-                                        <div class="form-group">
-                                            <label>酒店地址</label>
-                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HATb" runat="server">
-                                        </div>
-                                    </div>
-                                    <div class="basic-form m-t-20">
-                                        <div class="form-group">
-                                            <label>价格</label>
-                                            <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="HPTb" runat="server">
-                                        </div>
-                                    </div>
-                                    <div class="basic-form m-t-20">
-                                        <label id="Label1" runat="server"></label>
-                                    </div>
-                                    <div>
-                                        <label id="Msg" runat="server"></label>
-                                    </div>
-                                    <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click" />
-                                    <asp:Button ID="Res" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="Res_Click"/>
+                                    <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="添加" OnClick="SaveBtn_Click"/>
                             </div>
                         </div>
                         <div class="col-lg-9">
@@ -126,31 +95,55 @@
                                 </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                        <asp:GridView class="table student-data-table m-t-20" ID="HGV" runat="server"  OnSelectedIndexChanged="HGV_SelectedIndexChanged" AutoGenerateSelectButton="True" OnPageIndexChanged="HGV_PageIndexChanged" OnPageIndexChanging="HGV_PageIndexChanging" RowStyle-BorderColor="#999999">
-                                            <%--<PagerTemplate>
-                                                当前第
-                                                <!--((GridView)Container.NamingContainer)就是为了得到当前的控件-->
-                                                <asp:Label ID="LabelCurrentPage" runat="server" Text="<%# ((GridView)Container.NamingContainer).PageIndex + 1 %>"></asp:Label>
-                                                页/共
-                                                <!--得到分页页面的总数-->            
-                                                <asp:Label ID="LabelPageCount" runat="server" Text="<%# ((GridView)Container.NamingContainer).PageCount %>"></asp:Label>
-                                                页
-                                                 <!--如果该分页是首分页，那么该连接就不会显示了.同时对应了自带识别的命令参数CommandArgument-->
-                                                <asp:LinkButton ID="LinkButtonFirstPage" runat="server" CommandArgument="First" CommandName="Page"
-                                                    Visible='<%#((GridView)Container.NamingContainer).PageIndex != 0 %>'>首页</asp:LinkButton>
-                                                <asp:LinkButton ID="LinkButtonPreviousPage" runat="server" CommandArgument="Prev"
-                                                    CommandName="Page" Visible='<%# ((GridView)Container.NamingContainer).PageIndex != 0 %>'>上一页</asp:LinkButton>
-                                               <!--如果该分页是尾页，那么该连接就不会显示了-->
-                                                <asp:LinkButton ID="LinkButtonNextPage" runat="server" CommandArgument="Next" CommandName="Page"
-                                                    Visible='<%# ((GridView)Container.NamingContainer).PageIndex != ((GridView)Container.NamingContainer).PageCount - 1 %>'>下一页</asp:LinkButton>
-                                                <asp:LinkButton ID="LinkButtonLastPage" runat="server" CommandArgument="Last" CommandName="Page"
-                                                    Visible='<%# ((GridView)Container.NamingContainer).PageIndex != ((GridView)Container.NamingContainer).PageCount - 1 %>'>尾页</asp:LinkButton>
-                                                转到第
-                                                <asp:TextBox ID="txtNewPageIndex" runat="server" Width="20px" Text='<%# ((GridView)Container.Parent.Parent).PageIndex + 1 %>' />页
-                                                <!--这里将CommandArgument即使点击该按钮e.newIndex 值为3--> 
-                                                <asp:LinkButton ID="btnGo" runat="server" CausesValidation="False" CommandArgument="3"
-                                                    CommandName="Page" Text="GO" />
-                                            </PagerTemplate>--%>
+                                            <asp:GridView class="table student-data-table m-t-20" ID="HGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="HGV_Del" OnSelectedIndexChanged="HGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="酒店ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "HotelID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="酒店名称">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "HotelName").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="地址">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HAL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Address")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="价格">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HPL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="操作">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
+                                                    </ItemTemplate>
+                                
+                                                </asp:TemplateField>
+
+                                            </Columns>
+                                            <pagertemplate>
+                                                <table>
+                                                    <tr>
+                                                        <td style="width:100%; text-align:right">
+                                                            <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                            </pagertemplate>
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
                                         </asp:GridView>
                                            </div>
                                     </div>
