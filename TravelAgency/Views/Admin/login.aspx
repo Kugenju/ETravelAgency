@@ -42,6 +42,9 @@
                   <div class="col-md">
                     <asp:Button ID="LoginBtn" runat="server" Text="登陆" class="btn btn-primary btn-block" OnClick="LoginBtn_Click"/>
                   </div>
+                  <div class="col-md">
+                      <asp:Button ID="Button2" runat="server" Text="注册" class="btn btn-primary btn-block" OnClick="RegisterBtn_Click"/>
+                  </div>
                 </div>
               </div>
             </form>

@@ -34,5 +34,9 @@ namespace TravelAgency.Admin
                 }
             }
         }
+        protected void RegisterBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Register.aspx");
+        }
     }
 }
