@@ -17,10 +17,10 @@ namespace TravelAgency.Views.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["username"] == null)
-            //{
-            //    Response.Redirect("login.aspx");
-            //}
+            if (Session["username"].ToString() != "Admin")
+            {
+                Response.Redirect("login.aspx");
+            }
             fun = new Functions();
             showSpot();
         }

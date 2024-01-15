@@ -26,7 +26,7 @@ namespace TravelAgency.Admin
                 {
                     Session["username"] = UserTb.Value;
                     Session["password"] = PasswordTb.Value;
-                    Response.Redirect("Overall-Lines.aspx");
+                    Response.Redirect("index.aspx");
                 }
                 else
                 {

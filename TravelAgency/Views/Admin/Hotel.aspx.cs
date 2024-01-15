@@ -20,6 +20,10 @@ namespace TravelAgency.Views.Admin
         private Functions fun;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["username"].ToString() != "Admin")
+            {
+                Response.Redirect("login.aspx");
+            }
             fun = new Functions();
             showHotel();
         }
