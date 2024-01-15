@@ -1,8 +1,11 @@
 ﻿using EHotal.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -14,10 +17,10 @@ namespace TravelAgency.Views.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["username"] == null)
-            {
-                Response.Redirect("login.aspx");
-            }
+            //if (Session["username"] == null)
+            //{
+            //    Response.Redirect("login.aspx");
+            //}
             fun = new Functions();
             showSpot();
         }
@@ -25,29 +28,32 @@ namespace TravelAgency.Views.Admin
         private void showSpot()
         {
             String query = "Select * FROM Spot";
-            SGV.DataSource = fun.GetData(query);
+            DataView dv = fun.GetData(query);
+            SGV.DataSource = dv;
             SGV.DataBind();
+            GridViewRow pagerow = SGV.BottomPagerRow;
+            ((Label)pagerow.Cells[0].FindControl("PagerMsg")).Text= "共" + dv.Count.ToString() + "条记录," + SGV.PageCount.ToString() + "页第" + (SGV.PageIndex + 1).ToString() + "页,  本页" + SGV.Rows.Count.ToString() + "条记录";
         }
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                string SName = SNTb.Value;
-                string SAddress = SATb.Value;
-                string SPrice = SPTb.Value;
+                string SName = SNameTb.Value;
+                string SAddress = SAddressTb.Value;
+                string SPrice = SPriceTb.Value;
                 string Query = "insert into Spot (SpotName,Address,Price) values ('{0}','{1}','{2}');";
-                Query = string.Format(Query, SName,SAddress,SPrice);
+                Query = string.Format(Query, SName, SAddress, SPrice);
                 fun.setData(Query);
-                Msg.InnerText = "景点已添加";
+                ErrMsg.InnerText = "景点已添加";
                 showSpot();
-                SNTb.Value = "";
-                SATb.Value = "";
-                SPTb.Value = "";
+                SNameTb.Value = "";
+                SAddressTb.Value = "";
+                SPriceTb.Value = "";
             }
             catch (Exception ex)
             {
-                Msg.InnerText = ex.Message;
+                ErrMsg.InnerText = ex.Message;
             }
         }
 
@@ -59,9 +65,9 @@ namespace TravelAgency.Views.Admin
                 string SAddress = SAddressTb.Value;
                 string SPrice = SPriceTb.Value;
                 string Query = "update Spot set SpotName = '{0}', Address = '{1}', Price = '{2}' where SpotID = {3};";
-                Query = string.Format(Query, SName, SAddress,SPrice, SGV.SelectedRow.Cells[1].Text);
+                Query = string.Format(Query, SName, SAddress,SPrice, ((Label)SGV.SelectedRow.Cells[1].FindControl("SIL")).Text);
                 fun.setData(Query);
-                ErrMsg.InnerText = "酒店已修改";
+                ErrMsg.InnerText = "景点已修改";
                 showSpot();
                 SNameTb.Value = "";
                 SAddressTb.Value = "";
@@ -78,31 +84,21 @@ namespace TravelAgency.Views.Admin
             int selectedIndex = SGV.SelectedIndex;
             if (selectedIndex >= 0)
             {
-                SNameTb.Value = SGV.SelectedRow.Cells[2].Text;
-                SAddressTb.Value = SGV.SelectedRow.Cells[3].Text;
-                SPriceTb.Value = SGV.SelectedRow.Cells[4].Text;
+                SNameTb.Value = ((Label)SGV.Rows[selectedIndex].Cells[1].FindControl("SNL")).Text;
+                SAddressTb.Value = ((Label)SGV.Rows[selectedIndex].Cells[1].FindControl("SAL")).Text;
+                SPriceTb.Value = ((Label)SGV.Rows[selectedIndex].Cells[1].FindControl("SPL")).Text;
             }
         }
 
-        protected void Res_Click(object sender, EventArgs e)
-        {
-            SNTb.Value = "";
-            SATb.Value = "";
-            SPTb.Value = "";
-        }
-
-        protected void ResetBtn_Click(object sender, EventArgs e)
+        public void SGV_Del(object sender, GridViewDeleteEventArgs e)
         {
             try
             {
                 string Query = "delete from Spot where SpotID = {0};";
-                Query = string.Format(Query, SGV.SelectedRow.Cells[1].Text);
+                Query = string.Format(Query, ((Label)SGV.Rows[e.RowIndex].Cells[1].FindControl("SIL")).Text);
                 fun.setData(Query);
                 ErrMsg.InnerText = "酒店已删除";
                 showSpot();
-                SNameTb.Value = "";
-                SAddressTb.Value = "";
-                SPriceTb.Value = "";
             }
             catch (Exception ex)
             {
@@ -110,5 +106,16 @@ namespace TravelAgency.Views.Admin
             }
         }
 
+        protected void PreBtnClick(object sender, EventArgs e)
+        {
+            SGV.PageIndex = Math.Max(SGV.PageIndex - 1, 0);
+            showSpot();
+        }
+
+        protected void NextBtnClick(object sender, EventArgs e)
+        {
+            SGV.PageIndex = Math.Min(SGV.PageIndex + 1, SGV.PageCount - 1);
+            showSpot();
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace EHotal.Models
         private SqlConnection Con;
         private SqlCommand Cmd;
         private SqlDataReader Reader;
-        private DataTable dt;
+        private DataSet ds;
         private string Constr;
         private SqlDataAdapter sda;
 
@@ -29,12 +29,13 @@ namespace EHotal.Models
             return Cnt;
         }
 
-        public DataTable GetData(string Query)
+        public DataView GetData(string Query)
         {
-            dt = new DataTable();
+            ds = new DataSet();
             sda = new SqlDataAdapter(Query, Constr);
-            sda.Fill(dt);
-            return dt;
+            sda.Fill(ds);
+            DataView dv = new DataView(ds.Tables[0]);
+            return dv;
         }
 
         public SqlDataReader GetReader(string Query)

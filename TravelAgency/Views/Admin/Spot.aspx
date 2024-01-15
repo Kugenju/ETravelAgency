@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Spot.aspx.cs" Inherits="TravelAgency.Views.Admin.Spot" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Spot.aspx.cs" Inherits="TravelAgency.Views.Admin.Spot" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
@@ -32,7 +32,7 @@
                             <div class="col-md-3">
                                 <div class="card alert">
                                     <div class="card-header pr">
-                                        <h4>修改景点信息</h4>
+                                        <h4>景点信息管理</h4>
                                     </div>
                                         <div class="basic-form m-t-20">
                                             <div class="form-group">
@@ -56,36 +56,9 @@
                                             <label id="ErrMsg" runat="server"></label>
                                         </div>
                                         <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="修改" OnClick="EditBtn_Click"/>
-                                        <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="删除" OnClick="ResetBtn_Click"/>
+                                        <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="添加" OnClick="SaveBtn_Click"/>
                                 </div>
-                                <div class="card alert">
-                                    <div class="card-header pr">
-                                        <h4>添加景点信息</h4>
-                                    </div>
-                                        <div class="basic-form m-t-20">
-                                            <div class="form-group">
-                                                <label>景点名称</label>
-                                                <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="SNTb" runat="server">
-                                            </div>
-                                        </div>
-                                        <div class="basic-form m-t-20">
-                                            <div class="form-group">
-                                                <label>地址</label>
-                                                <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="SATb" runat="server">
-                                            </div>
-                                        </div>
-                                        <div class="basic-form m-t-20">
-                                            <div class="form-group">
-                                                <label>价格</label>
-                                                <input type="text" class="form-control border-none input-flat bg-ash" placeholder="50" id="SPTb" runat="server" />
-                                            </div>
-                                        </div>
-                                        <div class="basic-form m-t-20">
-                                            <label id="Msg" runat="server"></label>
-                                        </div>
-                                        <asp:Button ID="SaveBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存" OnClick="SaveBtn_Click"/>
-                                        <asp:Button ID="Res" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" OnClick="Res_Click"/>
-                                </div>
+                                
                             </div>
                             <div class="col-md-9">
                                 <div class="card alert">
@@ -122,27 +95,55 @@
                                     </div>
                                     <div class="card-body">
                                     <div class="table-responsive">
-                                        <asp:GridView class="table student-data-table m-t-20" ID="SGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="SGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                                        <asp:GridView class="table student-data-table m-t-20" ID="SGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="SGV_Del" OnSelectedIndexChanged="SGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
                                             <AlternatingRowStyle BackColor="White" />
                                             <Columns>
-                                                <asp:BoundField HeaderText="景点名称" />
-                                                <asp:BoundField HeaderText="地址" />
-                                                <asp:BoundField HeaderText="价格" />
-                                                <asp:TemplateField HeaderText="行为">
-
+                                                <asp:TemplateField HeaderText="景点ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="SIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SpotID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
                                                 </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="景点名称">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="SNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SpotName").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="地址">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="SAL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Address")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="价格">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="SPL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="操作">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
+                                                    </ItemTemplate>
+                                
+                                                </asp:TemplateField>
+
                                             </Columns>
-                                            
-                                            <EditRowStyle BackColor="#2461BF" />
+                                            <pagertemplate>
+                                                <table>
+                                                    <tr>
+                                                        <td style="width:100%; text-align:right">
+                                                            <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                            </pagertemplate>
                                             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
                                             <RowStyle BackColor="#EFF3FB" />
                                             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                                            
                                         </asp:GridView>
                                     </div>
                                 </div>
