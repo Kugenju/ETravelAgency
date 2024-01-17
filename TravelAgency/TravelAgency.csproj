@@ -389,6 +389,7 @@
     <Content Include="Forms\school-hostel-room.html" />
     <Content Include="Forms\table-data.html" />
     <Content Include="Views\Admin\Add-Lines.aspx" />
+    <Content Include="Views\Admin\AddOrders.aspx" />
     <Content Include="Views\Admin\Change-Lines.aspx" />
     <Content Include="Views\Admin\Guide.aspx" />
     <Content Include="Views\Admin\Hotel.aspx" />
@@ -409,6 +410,13 @@
     </Compile>
     <Compile Include="Views\Admin\Add-Lines.aspx.designer.cs">
       <DependentUpon>Add-Lines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AddOrders.aspx.cs">
+      <DependentUpon>AddOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\AddOrders.aspx.designer.cs">
+      <DependentUpon>AddOrders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\Change-Lines.aspx.cs">
       <DependentUpon>Change-Lines.aspx</DependentUpon>

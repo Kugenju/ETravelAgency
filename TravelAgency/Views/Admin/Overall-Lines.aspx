@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Overall-Lines.aspx.cs" Inherits="TravelAgency.Views.Admin.Overall_Lines" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Overall-Lines.aspx.cs" Inherits="TravelAgency.Views.Admin.Overall_Lines" EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MyBody" runat="server">
@@ -64,9 +64,80 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <asp:GridView ID="OLGV" class="table student-data-table m-t-20" runat="server"></asp:GridView>
+                                                <asp:GridView class="table student-data-table m-t-20" ID="OLGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="OLGV_Del" OnSelectedIndexChanged="OLGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                                    <AlternatingRowStyle BackColor="White" />
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="线路ID" Visible="false">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LID" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "LineID").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                
+                                                        <asp:TemplateField HeaderText="线路名称">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LNA" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "LineName").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                
+                                                        <asp:TemplateField HeaderText="开始时间">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LST" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "StartTime").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField HeaderText="结束时间">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LET" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EndTime").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="交通方式">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LTR" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Transportaion").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="交通费用">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LTF" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "TransFee").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="价格">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="LP" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price").ToString()%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField HeaderText="操作">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
+                                                            </ItemTemplate>
+                                
+                                                        </asp:TemplateField>
+
+                                                    </Columns>
+                                                    <pagertemplate>
+                                                        <table>
+                                                            <tr>
+                                                                <td style="width:100%; text-align:right">
+                                                                    <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                        <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                                    </pagertemplate>
+                                                    <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                    <RowStyle BackColor="#EFF3FB" />
+                                                    <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                                </asp:GridView>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="footer">
+                                    <p>This dashboard was generated on <span id="date-time"></span> <a href="#" class="page-refresh">Refresh Dashboard</a></p>
                                 </div>
                             </div>
                         </div>

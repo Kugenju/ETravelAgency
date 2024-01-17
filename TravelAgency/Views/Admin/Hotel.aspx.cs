@@ -158,12 +158,16 @@ namespace TravelAgency.Views.Admin
         {
             HGV.PageIndex = Math.Max(HGV.PageIndex - 1, 0);
             showHotel();
+            Button btn = sender as Button;
+            btn.Focus();
         }
 
         protected void NextBtnClick(object sender, EventArgs e)
         {
             HGV.PageIndex = Math.Min(HGV.PageIndex + 1, HGV.PageCount - 1);
             showHotel();
+            Button btn = sender as Button;
+            btn.Focus();
         }
 
     }

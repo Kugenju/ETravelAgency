@@ -110,12 +110,16 @@ namespace TravelAgency.Views.Admin
         {
             SGV.PageIndex = Math.Max(SGV.PageIndex - 1, 0);
             showSpot();
+            Button btn = sender as Button;
+            btn.Focus();
         }
 
         protected void NextBtnClick(object sender, EventArgs e)
         {
             SGV.PageIndex = Math.Min(SGV.PageIndex + 1, SGV.PageCount - 1);
             showSpot();
+            Button btn = sender as Button;
+            btn.Focus();
         }
     }
 }
