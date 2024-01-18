@@ -54,7 +54,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>名称</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="LineName" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -62,7 +62,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>起始时间</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="StartTime" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,7 +70,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>终止时间</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="EndTime" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,11 +78,12 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>交通方式</label>
-                                                        <select class="form-control bg-ash border-none">
+                                                        <select class="form-control bg-ash border-none" id="Transport" runat="server">
 							                                                        <option></option>
 							                                                        <option>高铁</option>
 							                                                        <option>大巴</option>
-							                                                        <option>飞机</option>
+							                                                        <option>航空</option>
+
 						                                                        </select>
                                                     </div>
                                                 </div>
@@ -93,7 +94,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>交通费用</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="TransFee" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -101,7 +102,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>价格</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="Price" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -109,7 +110,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>旅行天数</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="AllDay" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,7 +121,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>酒店列表</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="HotelsL" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,7 +131,7 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>导游列表</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="GuidesL" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -140,17 +141,176 @@
                                                 <div class="basic-form">
                                                     <div class="form-group">
                                                         <label>景点列表</label>
-                                                        <input type="text" class="form-control border-none input-flat bg-ash" placeholder="">
+                                                        <input type="text" class="form-control border-none input-flat bg-ash" id="SpotsL" runat="server"/>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5 sbmt-btn" type="button">保存</button>
-                                        <button class="btn btn-default btn-lg m-b-10 m-l-5 sbmt-btn" type="button">重置</button>
+                                        <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="保存修改" OnClick="EditBtn_Click"/>
+                                       
                                     </div>
                                 </div>
                         </div>
                         </div>
+                                                <div class="row">
+                            <div class="col-md-6">
+                                <div class ="card alert">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <label>酒店信息</label>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <asp:GridView class="table student-data-table m-t-20" ID="ALHGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="AddHotel" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="酒店ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "HotelID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="酒店名称">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "HotelName").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="地址">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HAL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Address")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="价格">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="HPL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <pagertemplate>
+                                                <table>
+                                                    <tr>
+                                                        <td style="width:100%; text-align:right">
+                                                            <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                            </pagertemplate>
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card alert">
+                                    <div class ="card-body">
+                                        <div class="card-header">
+                                            <label>导游信息</label>
+                                        </div>
+                                            <div class="table-responsive">
+                                                <asp:GridView class="table student-data-table m-t-20" ID="ALGGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="AddGuide" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                                <AlternatingRowStyle BackColor="White" />
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="导游ID" Visible="false">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="GIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "GuideID").ToString()%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                
+                                                    <asp:TemplateField HeaderText="导游名称">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="GNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "GuideName").ToString()%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                
+                                                    <asp:TemplateField HeaderText="导游联系方式">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="GCL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Contact").ToString()%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                </Columns>
+                                                <pagertemplate>
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width:100%; text-align:right">
+                                                                <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <asp:Button ID="GPreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="GPreBtnClick" />
+                                                    <asp:Button ID="GNextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="GNextBtnClick" />
+                                                </pagertemplate>
+                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle BackColor="#EFF3FB" />
+                                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card alert">
+                                    <div class="card-body">
+                                        <div class="card-header">
+                                            <label>景点信息</label>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <asp:GridView class="table student-data-table m-t-20" ID="ALSGV" runat="server" AutoGenerateSelectButton="True" OnSelectedIndexChanged="AddSpot" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                                <AlternatingRowStyle BackColor="White" />
+                                                <Columns>
+                                                    <asp:TemplateField HeaderText="景点ID" Visible="false">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="SIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SpotID").ToString()%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                
+                                                    <asp:TemplateField HeaderText="景点名称">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="SNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SpotName").ToString()%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                
+                                                    <asp:TemplateField HeaderText="地址">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="SAL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Address")%>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                
+                                                    <asp:TemplateField HeaderText="价格">
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="SPL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price")%>'></asp:Label>
+                                                        </ItemTemplate>      
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <pagertemplate>
+                                                    <table>
+                                                        <tr>
+                                                            <td style="width:100%; text-align:right">
+                                                                <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <asp:Button ID="SPreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                    <asp:Button ID="SNextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                                </pagertemplate>
+                                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                                <RowStyle BackColor="#EFF3FB" />
+                                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                            </asp:GridView>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="footer">
