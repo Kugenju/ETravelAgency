@@ -29,7 +29,41 @@
                 <section id="main-content">
                     <form runat="server">
                         <div class="row">
-                            <div>
+                             <div class="col-md-3">
+                                <div class="card alert">
+                                    <div class="card-header pr">
+                                        <h4>旅行线路详细信息</h4>
+                                    </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>游览景点</label>
+                                                </div><div>
+                                                <label id="SpotsInfo" runat="server"></label>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>居住酒店</label></div><div>
+                                                <label id="HotelsInfo" runat="server"></label></div>
+                                            </div>
+                                        </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>导游</label></div><div>
+                                                <label id="GuideInfo" runat="server"></label></div>
+                                            </div>
+                                        </div>
+                                         <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="修改" OnClick="EditBtn_Click"/>
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-9">
+                               
                                 <div class="card alert">
                                     <div class="card-header pr">
                                         <h4></h4>
