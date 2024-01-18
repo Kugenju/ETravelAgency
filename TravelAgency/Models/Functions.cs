@@ -10,11 +10,25 @@ namespace EHotal.Models
     public class Functions
     {
         private SqlConnection Con;
-        private SqlCommand Cmd;
-        private SqlDataReader Reader;
-        private DataSet ds;
+        //private SqlCommand Cmd;
+        //private SqlDataReader Reader;
+        //private DataSet ds;
         private string Constr;
-        private SqlDataAdapter sda;
+        //private SqlDataAdapter sda;
+
+        public Functions()
+        {
+            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\nju\lessons\信息系统开发\a大作业\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
+            Con = new SqlConnection(Constr);
+            
+        }
+
+        private SqlCommand newCommand()
+        {
+            SqlCommand Cmd = new SqlCommand();
+            Cmd.Connection = Con;
+            return Cmd;
+        }
 
         public int setData(string Query)
         {
@@ -23,16 +37,17 @@ namespace EHotal.Models
             {
                 Con.Open();
             }
-            Cmd.CommandText = Query;
-            Cnt = Cmd.ExecuteNonQuery();
+            SqlCommand localCmd = newCommand();
+            localCmd.CommandText = Query;
+            Cnt = localCmd.ExecuteNonQuery();
             Con.Close();
             return Cnt;
         }
 
-        public DataView GetData(string Query)
+        public DataView GetData(string Query)  // 与command无关
         {
-            ds = new DataSet();
-            sda = new SqlDataAdapter(Query, Constr);
+            DataSet ds = new DataSet();
+            SqlDataAdapter sda = new SqlDataAdapter(Query, Constr);
             sda.Fill(ds);
             DataView dv = new DataView(ds.Tables[0]);
             return dv;
@@ -44,18 +59,24 @@ namespace EHotal.Models
             {
                 Con.Open();
             }
+            SqlCommand Cmd = newCommand();
             Cmd.CommandText = Query;
-            Reader = Cmd.ExecuteReader();
+            SqlDataReader Reader = Cmd.ExecuteReader(CommandBehavior.CloseConnection);
             return Reader;
         }
 
-        public Functions()
+        public bool CheckExists(string Query)  //检验SQL语句，一般是查询语句，返回的内容是否为空
         {
-            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\C#data\TravelAgency\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
-            Con = new SqlConnection(Constr);
-            Cmd = new SqlCommand();
-            Cmd.Connection = Con;
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
+            SqlCommand Cmd = newCommand();
+            Cmd.CommandText = Query;
+            SqlDataReader Reader = Cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return Reader.HasRows;
         }
+
     }
 
 
