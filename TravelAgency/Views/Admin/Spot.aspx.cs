@@ -90,7 +90,7 @@ namespace TravelAgency.Views.Admin
             }
         }
 
-        public void SGV_Del(object sender, GridViewDeleteEventArgs e)
+        protected void SGV_Del(object sender, GridViewDeleteEventArgs e)
         {
             try
             {

@@ -17,7 +17,7 @@ namespace TravelAgency.Views.Admin
         {
             if (!IsPostBack)
             {
-                if (Session["EditLineID"] != null)  //
+                if (Session["EditLineID"] != null && Session["username"].ToString() == "Admin")  //
                 {
                     MyDataAccess = new Functions();
                     string sql = "SELECT * FROM Line WHERE LineID = " + Session["EditLineID"] + ";";

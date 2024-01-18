@@ -17,6 +17,8 @@ namespace TravelAgency.Views.Admin
         {
             if (!IsPostBack)
             {
+                if (Session["username"] == null || Session["username"].ToString() != "Admin")
+                    Response.Redirect("login.aspx");
 
                 ResetBut_Click(sender, e);
 
