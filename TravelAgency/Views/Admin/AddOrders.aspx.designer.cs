@@ -15,76 +15,40 @@ namespace TravelAgency.Views.Admin
     {
 
         /// <summary>
-        /// HNameTb 控件。
+        /// SpotsInfo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText HNameTb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SpotsInfo;
 
         /// <summary>
-        /// HAddressTb 控件。
+        /// HotelsInfo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText HAddressTb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HotelsInfo;
 
         /// <summary>
-        /// HPriceTb 控件。
+        /// GuideInfo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText HPriceTb;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GuideInfo;
 
         /// <summary>
-        /// Text1 控件。
+        /// AddOrderBut 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
-
-        /// <summary>
-        /// Text2 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text2;
-
-        /// <summary>
-        /// ErrMsg 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrMsg;
-
-        /// <summary>
-        /// EditBtn 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EditBtn;
-
-        /// <summary>
-        /// ResetBtn 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ResetBtn;
+        protected global::System.Web.UI.WebControls.Button AddOrderBut;
 
         /// <summary>
         /// OLGV 控件。

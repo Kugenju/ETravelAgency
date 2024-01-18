@@ -121,52 +121,46 @@
                                         </ul>
                                     </div>
                                 </div>
+
                                 <div class="col-md-3">
-                                    <div class="card alert">
-                                        <div class="card-header pr">
-                                            <h4>线路详情</h4>
-                                        </div>
-                                            <div class="basic-form m-t-20">
-                                                <div class="form-group">
-                                                    <label>线路名称</label>
-                                                    <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HNameTb" runat="server">
-                                                </div>
-                                            </div>
-                                            <div class="basic-form m-t-20">
-                                                <div class="form-group">
-                                                    <label>起始时间</label>
-                                                    <input type="text" class="form-control border-none input-flat bg-ash" placeholder="" id="HAddressTb" runat="server">
-                                                </div>
-                                            </div>
-                                            <div class="basic-form m-t-20">
-                                                <div class="form-group">
-                                                    <label>终止时间</label>
-                                                    <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="HPriceTb" runat="server">
-                                                </div>
-                                            </div>
-                                            <div class="basic-form m-t-20">
-                                                <div class="form-group">
-                                                    <label>交通方式</label>
-                                                    <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="Text1" runat="server">
-                                                </div>
-                                            </div>
-                                            <div class="basic-form m-t-20">
-                                                <div class="form-group">
-                                                    <label>费用</label>
-                                                    <input type="text" class="form-control border-none input-flat bg-ash" placeholder="300" id="Text2" runat="server">
-                                                </div>
-                                            </div>
-                                            <div class="basic-form m-t-20">
-                                                <label id="ErrMsg" runat="server"></label>
-                                            </div>
-                                            <asp:Button ID="EditBtn" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="提交订单" />
-                                            <asp:Button ID="ResetBtn" class="btn btn-default btn-lg m-b-10 m-l-5" runat="server" Text="重置" />
+                                <div class="card alert">
+                                    <div class="card-header pr">
+                                        <h4>旅行线路详细信息</h4>
                                     </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>游览景点</label>
+                                                </div><div>
+                                                <label id="SpotsInfo" runat="server"></label>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>居住酒店</label></div><div>
+                                                <label id="HotelsInfo" runat="server"></label></div>
+                                            </div>
+                                        </div>
+                                        <div class="basic-form m-t-20">
+                                            <div class="form-group">
+                                                <div>
+                                                <label>导游</label></div><div>
+                                                <label id="GuideInfo" runat="server"></label></div>
+                                            </div>
+                                        </div>
+                                         <asp:Button ID="AddOrderBut" class="btn btn-default btn-lg m-b-10 bg-warning border-none m-r-5" runat="server" Text="订购旅行产品" OnClick="AddOrderBtn_Click"/>
+
                                 </div>
+                            </div>
+                                    
+
+
                                 <div class="col-lg-9">
                                 <div class="card-body">
                                     <div class="table-responsive">
-                                            <asp:GridView class="table student-data-table m-t-20" ID="OLGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="OLGV_Del" OnSelectedIndexChanged="OLGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                            <asp:GridView class="table student-data-table m-t-20" ID="OLGV" runat="server" AutoGenerateSelectButton="True"  OnSelectedIndexChanged="OLGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
                                                 <AlternatingRowStyle BackColor="White" />
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="线路ID" Visible="false">
@@ -203,14 +197,6 @@
                                                             <asp:Label ID="LP" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price").ToString()%>'></asp:Label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-
-                                                    <asp:TemplateField HeaderText="操作">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
-                                                        </ItemTemplate>
-                            
-                                                    </asp:TemplateField>
-
                                                 </Columns>
                                                 <pagertemplate>
                                                     <table>
