@@ -13,5 +13,20 @@ namespace TravelAgency.Views
         {
 
         }
-    }
+
+        protected void Register_Click(object sender, EventArgs e)
+        {
+            // 检查是否同意用户协议
+            if (CheckBox1)
+
+            // 检查是否填满内容
+            string ID = Usb.Values;
+
+            //if ()
+
+
+        }
+    } 
 }
+
+

@@ -7,11 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace TravelAgency.Admin
-{
+namespace TravelAgency.Views{
 
 
-    public partial class login
+    public partial class Register
     {
 
         /// <summary>
@@ -40,6 +39,15 @@ namespace TravelAgency.Admin
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl CuAddress;
+
+        /// <summary>
+        /// PhoneNumber 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl PhoneNumber;
 
         /// <summary>
         /// Passwordt 控件。
@@ -85,5 +93,14 @@ namespace TravelAgency.Admin
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Butt2;
+
+        /// <summary>
+        /// ErrMsg 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ErrMsg;
     }
 }
