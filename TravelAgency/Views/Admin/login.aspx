@@ -1,4 +1,59 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="TravelAgency.Admin.login" EnableEventValidation="false"%>  <!DOCTYPE html> <!-- 作为登陆网站，与客户数据库进行连接--> <html xmlns="http://www.w3.org/1999/xhtml" lang="en"> <head runat="server"> <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>     <meta charset="utf-8"> 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  		<title>旅行社管理系统</title> 		<meta name="description" content=""> 		<meta name="keywords" content="">               <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">  		<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.css">     <link rel="stylesheet" href="../../assets/css/animate.css">     <link rel="stylesheet" href="../../assets/fonts/ionicons/css/ionicons.min.css">          <link rel="stylesheet" href="../../assets/css/owl.carousel.min.css">          <link rel="stylesheet" href="../../assets/fonts/flaticon/font/flaticon.css">      <link rel="stylesheet" href="../../assets/fonts/fontawesome/css/font-awesome.min.css">     <link rel="stylesheet" href="../../assets/css/bootstrap-datepicker.css">     <link rel="stylesheet" href="../../assets/css/select2.css">           <link rel="stylesheet" href="../../assets/css/helpers.css">     <link rel="stylesheet" href="../../assets/css/style.css">     <!--css、字体等风格设定 --> </head> <body>     <!-- 以下为导航栏-->     <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">       <div class="container">         <a class="navbar-brand" href="/">旅行社管理系统</a>         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">           <span><i class="ion-navicon"></i></span>         </button>         <div class="collapse navbar-collapse" id="probootstrap-menu">           <ul class="navbar-nav ml-auto">             <li class="nav-item active"><a class="nav-link" href="login.aspx">Home</a></li>             <li class="nav-item"><a class="nav-link" >Lines</a></li>             <li class="nav-item"><a class="nav-link" >Guides</a></li>             <li class="nav-item"><a class="nav-link">Travel With Us</a></li>             <li class="nav-item"><a class="nav-link">Contact</a></li>           </ul>         </div>       </div>     </nav>     <!-- END nav -->     <!-- 以下页面的为背景、主标题、登陆界面框包括输入框等 -->    <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('../../assets/images/bg_1.jpg');" data-stellar-background-ratio="0.5"  id="section-home">
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="TravelAgency.Admin.login" EnableEventValidation="false"%>
+
+<!DOCTYPE html>
+<!-- 作为登陆网站，与客户数据库进行连接-->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>旅行社管理系统</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+    
+    
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+
+		<link rel="stylesheet" href="../../assets/css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/animate.css">
+    <link rel="stylesheet" href="../../assets/fonts/ionicons/css/ionicons.min.css">
+    
+    <link rel="stylesheet" href="../../assets/css/owl.carousel.min.css">
+    
+    <link rel="stylesheet" href="../../assets/fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="../../assets/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../../assets/css/select2.css">
+    
+
+    <link rel="stylesheet" href="../../assets/css/helpers.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!--css、字体等风格设定 -->
+</head>
+<body>
+    <!-- 以下为导航栏-->
+    <nav class="navbar navbar-expand-lg navbar-dark probootstrap_navbar" id="probootstrap-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="/">旅行社管理系统</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#probootstrap-menu" aria-controls="probootstrap-menu" aria-expanded="false" aria-label="Toggle navigation">
+          <span><i class="ion-navicon"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="probootstrap-menu">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="login.aspx">Home</a></li>
+            <li class="nav-item"><a class="nav-link" >Lines</a></li>
+            <li class="nav-item"><a class="nav-link" >Guides</a></li>
+            <li class="nav-item"><a class="nav-link">Travel With Us</a></li>
+            <li class="nav-item"><a class="nav-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+    <!-- 以下页面的为背景、主标题、登陆界面框包括输入框等 -->
+   <section class="probootstrap-cover overflow-hidden relative"  style="background-image: url('../../assets/images/bg_1.jpg');" data-stellar-background-ratio="0.5"  id="section-home">
       <div class="overlay"></div>
       <div class="container">
         <div class="row align-items-center">
@@ -53,7 +108,9 @@
       </div>
     
     </section>
-    <!-- END section -->      <section class="probootstrap_section" id="section-feature-testimonial">
+    <!-- END section -->
+
+    <section class="probootstrap_section" id="section-feature-testimonial">
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-12 text-center mb-5 probootstrap-animate">
@@ -74,7 +131,9 @@
         
       </div>
     </section>
-    <!-- END section -->      <section class="probootstrap_section" id="section-city-guides">
+    <!-- END section -->
+
+    <section class="probootstrap_section" id="section-city-guides">
       <div class="container">
         <div class="row text-center mb-5 probootstrap-animate">
           <div class="col-md-12">
@@ -110,7 +169,9 @@
           </div>
         </div>
       </div>
-    </section>      <footer class="probootstrap_section probootstrap-border-top">
+    </section>
+
+    <footer class="probootstrap_section probootstrap-border-top">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-3">
@@ -151,7 +212,10 @@
           </div>
         </div>
       </div>
-    </footer>      <!-- 以下为页面依赖的js脚本 -->     <script src="../../assets/js/jquery.min.js"></script>
+    </footer>
+
+    <!-- 以下为页面依赖的js脚本 -->
+    <script src="../../assets/js/jquery.min.js"></script>
     
     <script src="../../assets/js/popper.min.js"></script>
     <script src="../../assets/js/bootstrap.min.js"></script>
@@ -163,4 +227,6 @@
 
     <script src="../../assets/js/select2.min.js"></script>
 
-    <script src="../../assets/js/main.js"></script> </body> </html> 
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
