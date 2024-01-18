@@ -64,7 +64,74 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
-                                            <asp:GridView ID="OGV" runat="server"></asp:GridView>
+                                            <asp:GridView class="table student-data-table m-t-20" ID="OGV" runat="server" AutoGenerateSelectButton="True" OnRowDeleting="OGV_Del" OnSelectedIndexChanged="OGV_SelectedIndexChanged" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
+                                            <AlternatingRowStyle BackColor="White" />
+                                            <Columns>
+                                                <asp:TemplateField HeaderText="订单ID" Visible="false">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="OIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "OrderID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="用户ID">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="CIL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CustomerID").ToString()%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="用户姓名">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="CNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CustomerName")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                
+                                                <asp:TemplateField HeaderText="旅行线路名">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="LNL" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "LineName")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="开始日期">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="STD" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "StartTime")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="持续天数">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="AllDay" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "AllDay")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="价格">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="Price" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price")%>'></asp:Label>
+                                                    </ItemTemplate>      
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField HeaderText="操作">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="delbutton" runat="server" CommandName="Delete" CausesValidation="false">删除</asp:LinkButton>
+                                                    </ItemTemplate>
+                                
+                                                </asp:TemplateField>
+
+                                            </Columns>
+                                            <pagertemplate>
+                                                <table>
+                                                    <tr>
+                                                        <td style="width:100%; text-align:right">
+                                                            <asp:Label ID="PagerMsg" runat="server" Text="Label"></asp:Label>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <asp:Button ID="PreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
+                                                <asp:Button ID="NextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                            </pagertemplate>
+                                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                            <RowStyle BackColor="#EFF3FB" />
+                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                        </asp:GridView>
                                         </div>
                                     </div>
                                 </div>
