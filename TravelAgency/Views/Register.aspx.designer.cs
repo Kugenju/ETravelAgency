@@ -7,7 +7,8 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace TravelAgency.Views{
+namespace TravelAgency.Views
+{
 
 
     public partial class Register
