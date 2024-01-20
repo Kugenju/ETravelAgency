@@ -5,3 +5,10 @@ F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.csproj.AssemblyRefere
 F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.csproj.CoreCompileInputs.cache
 F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.dll
 F:\C#data\TravelAgency\TravelAgency\obj\Debug\TravelAgency.pdb
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\obj\Debug\TravelAgency.csproj.AssemblyReference.cache
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\obj\Debug\TravelAgency.csproj.CoreCompileInputs.cache
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\obj\Debug\TravelAgency.dll
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\obj\Debug\TravelAgency.pdb
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\bin\TravelAgency.dll.config
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\bin\TravelAgency.dll
+C:\Users\Etoiles\Desktop\IS-ETA\TravelAgency\bin\TravelAgency.pdb

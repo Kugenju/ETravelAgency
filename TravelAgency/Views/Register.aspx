@@ -1,8 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="TravelAgency.Views.Register" EnableEventValidation="false"%>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="TravelAgency.Views.Register" %>
 
 <!DOCTYPE html>
 <!-- 作为登陆网站，与客户数据库进行连接-->
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8">
@@ -30,7 +30,7 @@
 
     <link rel="stylesheet" href="../assets/css/helpers.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <!--css、字体等风格设定 -->
+    <!--css、字体等风格设定 -->    
 </head>
 <body>
     <!-- 以下为导航栏-->
@@ -156,4 +156,3 @@
     <script src="../assets/js/main.js"></script>
 </body>
 </html>
-
