@@ -32,7 +32,7 @@
             <div class="nano-content">
                 <ul>
                     <li class="label">Main</li>
-                    <li><a class="sidebar-sub-toggle"><i class="ti-power-off"></i> 仪表盘</a>
+                    <li><a href="index.aspx"><i class="ti-power-off"></i> 仪表盘</a>
                     </li>
                     <li><a class="sidebar-sub-toggle"><i class="ti-pencil-alt"></i>旅行线路<span class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
