@@ -298,8 +298,8 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <asp:Button ID="SPreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="PreBtnClick" />
-                                                    <asp:Button ID="SNextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="NextBtnClick" />
+                                                    <asp:Button ID="SPreBtn" class="btn btn-group-left btn-outline-navy m-b-10 m-l-5" runat="server" Text="上一页" OnClick="SPreBtnClick" />
+                                                    <asp:Button ID="SNextBtn" class="btn btn-group-right btn-outline-navy m-b-10 m-l-5" runat="server" Text="下一页" OnClick="SNextBtnClick" />
                                                 </pagertemplate>
                                                 <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
                                                 <RowStyle BackColor="#EFF3FB" />

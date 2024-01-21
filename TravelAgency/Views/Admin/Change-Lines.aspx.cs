@@ -262,6 +262,7 @@ namespace TravelAgency.Views.Admin
             btn.Focus();
         }
 
+
         protected void AddHotel(object sender, EventArgs e)
         {
             string curHotel = ((Label)ALHGV.SelectedRow.Cells[0].FindControl("HNL")).Text;
