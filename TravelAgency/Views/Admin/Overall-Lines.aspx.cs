@@ -123,8 +123,14 @@ namespace TravelAgency.Views.Admin
 
         protected void EditBtn_Click(object sender, EventArgs e)
         {
-            Session["EditLineID"] = ((Label)OLGV.SelectedRow.Cells[1].FindControl("LID")).Text;  //通过session确定是改变哪个id
-            Response.Redirect("Change-Lines.aspx");  //redirect到改变line的页面
+            try
+            {
+                Session["EditLineID"] = ((Label)OLGV.SelectedRow.Cells[1].FindControl("LID")).Text;  //通过session确定是改变哪个id
+                Response.Redirect("Change-Lines.aspx");  //redirect到改变line的页
+            }catch (Exception ex)
+            {
+
+            }
 
         }
     }
