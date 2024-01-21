@@ -18,7 +18,7 @@ namespace EHotal.Models
 
         public Functions()
         {
-            Constr = @"Data Source=XINTON\EXAMPLE;Initial Catalog=TRAVELAGENCY;Integrated Security=True;Connect Timeout=30";
+            Constr = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\nju\lessons\信息系统开发\a大作业\TravelAgency.mdf;Integrated Security=True;Connect Timeout=30";
             Con = new SqlConnection(Constr);
             
         }
